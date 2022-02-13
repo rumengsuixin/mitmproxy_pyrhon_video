@@ -1,0 +1,59 @@
+
+<Panel>:
+    cols: 1
+    id: root_panel
+    panel_list: panel_list
+    GridLayout:
+        cols: 1
+        size_hint_y: 3
+        ScrollView:
+            size: 500, 320
+            do_scroll_x: False
+            do_scroll_y: True
+
+            GridLayout:
+                id: panel_list
+                cols: 1
+                padding: 10
+                spacing: 10
+                size_hint_y: None
+                width: root.width
+                height: self.minimum_height
+
+    GridLayout:
+        cols: 1
+        size_hint_y: 1
+
+        padding:10, 10
+        Button:
+            text: 'confirm'
+            on_press: root.confirm()
+
+
+
+<Row@GridLayout>:
+    cols: 3
+    size_hint: 1, None
+    height: 40
+
+    TextInput:
+        size_hint_x: 5
+        text: root.txt
+        font_size:14
+        font_name: 'E:\\fonts\\HarmonyOS_Sans_SC_Black.ttf'
+    Button:
+        size_hint_y: None
+        size_hint_x: 1
+        height: 40
+        text: '下载'
+        halign: 'left'
+        font_name: 'E:\\fonts\\HarmonyOS_Sans_SC_Light.ttf'
+        font_size: 16
+        on_press: root.panel.download_(widget_id = root.widget_id)
+    Button:
+        size_hint_x: 1
+        text: '删除'
+        font_name: 'E:\\fonts\\HarmonyOS_Sans_SC_Light.ttf'
+        font_size: 16
+        background_color: 1.0, 0.0, 0.0, 1.0
+        on_press: root.panel.unrender_(widget = root.panel.ids[root.widget_id])
